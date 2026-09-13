@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f0e8" />
+    <meta name="description" content="A clean, fast link downloader for your saved media." />
+    <title>Dropfile — download your links</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Dropfile home">
+          <span class="brand-mark" aria-hidden="true">↓</span>
+          <span>dropfile</span>
+        </a>
+        <div class="topbar-meta">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>ready to receive</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <div class="eyebrow">one link in / one file out</div>
+          <h1 id="page-title">Your links,<br /><em>downloaded.</em></h1>
+          <p class="hero-copy">Paste a video, image, or audio link and let Dropfile handle the rest.</p>
+        </section>
+
+        <section class="download-panel" aria-labelledby="download-title">
+          <div class="panel-label">
+            <span id="download-title">Paste a link</span>
+            <span class="panel-index">01</span>
+          </div>
+          <form id="download-form" novalidate>
+            <div class="input-wrap" id="drop-zone">
+              <label class="sr-only" for="url-input">Media URL</label>
+              <input id="url-input" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://..." spellcheck="false" required />
+              <button class="clear-button" id="clear-button" type="button" aria-label="Clear URL" hidden>×</button>
+              <button class="download-button" type="submit">
+                <span>Download</span>
+                <span class="button-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+            <div class="form-foot">
+              <span id="helper-text">TikTok · Instagram · YouTube · X · direct files</span>
+              <button class="settings-toggle" id="settings-toggle" type="button" aria-expanded="false">Service settings <span aria-hidden="true">⌄</span></button>
+            </div>
+            <div class="settings" id="settings" hidden>
+              <label for="endpoint-input">Downloader endpoint</label>
+              <div class="endpoint-row">
+                <input id="endpoint-input" type="url" value="https://api.cobalt.tools/api/json" spellcheck="false" />
+                <button class="save-endpoint" id="save-endpoint" type="button">Save</button>
+              </div>
+              <p>GitHub Pages is static, so this endpoint does the media fetching. Use your own compatible CORS-enabled service if needed.</p>
+            </div>
+          </form>
+          <div class="status-area" id="status-area" role="status" aria-live="polite" hidden>
+            <span class="loader" aria-hidden="true"></span>
+            <span id="status-text"></span>
+          </div>
+        </section>
+
+        <section class="recent-section" aria-labelledby="recent-title">
+          <div class="section-heading">
+            <h2 id="recent-title">Recent drops</h2>
+            <button id="clear-history" class="text-button" type="button" hidden>Clear all</button>
+          </div>
+          <div id="recent-list" class="recent-list">
+            <div class="empty-state" id="empty-state">
+              <span class="empty-icon" aria-hidden="true">↘</span>
+              <span>Your downloaded links will land here.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Made for your saves.</span>
+        <span>Files are downloaded directly to your device.</span>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
